@@ -5,7 +5,7 @@ public class AnimatorManager : MonoBehaviour
    Animator animator;
    int horizontal;
    int vertical;
-   
+
 
    private void Awake()
    {
@@ -15,7 +15,7 @@ public class AnimatorManager : MonoBehaviour
    }
 
 
-   public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
+   public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting)
    {
     //Animation Snapping
     float snappedHorizontal;
@@ -66,6 +66,12 @@ public class AnimatorManager : MonoBehaviour
         snappedVertical = 0;
     }
     #endregion
+
+    if (isSprinting)
+    {
+        snappedHorizontal = horizontalMovement;
+        snappedVertical = 2;
+    }
 
 
     animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
