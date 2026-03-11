@@ -27,9 +27,9 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = FindFirstObjectByType<InputManager>();
         
-        targetTransform = FindObjectOfType<PlayerManager>().transform;
+        targetTransform = FindFirstObjectByType<PlayerManager>().transform;
 
         cameraTransform = Camera.main.transform;
         defaultPosition = cameraTransform.localPosition.z;

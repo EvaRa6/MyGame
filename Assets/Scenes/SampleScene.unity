@@ -793,6 +793,7 @@ MonoBehaviour:
   verticalInput: 0
   horizontalInput: 0
   b_Input: 0
+  jump_Input: 0
 --- !u!114 &966660302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,10 +815,13 @@ MonoBehaviour:
     m_Bits: 1
   isSprinting: 0
   isGrounded: 1
+  isJumping: 0
   walkingSpeed: 1.5
   runningSpeed: 2.5
   sprintingSpeed: 3.5
   rotationSpeed: 10
+  jumpHeight: 10
+  gravityIntensity: -40
 --- !u!114 &966660303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2d911bb6be809468355d8dddd9cd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  animator: {fileID: 0}
 --- !u!1001 &1061464212
 PrefabInstance:
   m_ObjectHideFlags: 0
