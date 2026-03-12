@@ -6,7 +6,7 @@ public class InteractbleObject : MonoBehaviour
 
     protected PlayerManager player; //player interacting with the objects
     protected Collider interactableCollider; //collider enabling the img interacting when the player is close enough for interaction
-    [SerializeField] protected GameObject interactableImage; //img indicating a player can interact with this object
+    [SerializeField] protected GameObject interactableCanvas; //img indicating a player can interact with this object
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +19,20 @@ public class InteractbleObject : MonoBehaviour
 
         if (player != null)
         {
-            interactableImage.SetActive(true);
+            interactableCanvas.SetActive(true);
+            player.canInteract = true;
+        }
+    }
+
+    protected virtual void OnTriggerStay(Collider other)
+    {
+        if (player != null)
+        {
+            if (player.inputManager.interactionInput)
+            {
+                Interact(player);
+                player.inputManager.interactionInput = false;
+            }
         }
     }
 
@@ -34,7 +47,13 @@ public class InteractbleObject : MonoBehaviour
 
         if (player != null)
         {
-            interactableImage.SetActive(false);
+            interactableCanvas.SetActive(false);
+            player.canInteract = false;
         }
+    }
+
+    protected virtual void Interact(PlayerManager player)
+    {
+        Debug.Log("You have interacted");
     }
 }

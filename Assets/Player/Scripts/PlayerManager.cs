@@ -3,11 +3,12 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     Animator animator;
-    InputManager inputManager;
+    public InputManager inputManager;
     CameraManager cameraManager;
     PlayerLocomotion playerLocomotion;
     
     public bool isInteracting;
+    public bool canInteract;
     public bool isUsingRootMotion;
 
     private void Awake()

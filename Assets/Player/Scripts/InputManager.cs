@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     PlayerControls playerControls;
     PlayerLocomotion playerLocomotion;
     AnimatorManager animatorManager;
+    public PlayerManager player;
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
@@ -21,6 +22,7 @@ public class InputManager : MonoBehaviour
     public bool b_Input;
     public bool x_Input;
     public bool jump_Input;
+    public bool interactionInput;
 
 
     private void Awake()
@@ -40,8 +42,12 @@ public class InputManager : MonoBehaviour
 
             playerControls.PlayerActions.B.performed += i => b_Input = true;
             playerControls.PlayerActions.B.canceled += i => b_Input = false;
+
             playerControls.PlayerActions.X.performed += i => x_Input = true;
+
             playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
+
+            playerControls.PlayerActions.Interact.performed += i => interactionInput = true;
         }
 
 
@@ -59,6 +65,7 @@ public class InputManager : MonoBehaviour
         HandleSprintingInput();
         HandleJumpingInput();
         HandleDodgeInput();
+        HandleInteractionInput();
     }
     
     private void HandleMovementInput()
@@ -103,4 +110,14 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private void HandleInteractionInput()
+    {
+        if (interactionInput)
+        {
+            if (!player.canInteract)
+            {
+                interactionInput = false;
+            }
+        } 
+    }
 }
