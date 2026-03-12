@@ -91,11 +91,11 @@ public class AnimatorManager : MonoBehaviour
    {
     if (playerManager.isUsingRootMotion)
     {
-        playerLocomotion.playerRigidbody.drag = 0;
+        playerLocomotion.playerRigidbody.linearDamping = 0;
         Vector3 deltaPosition = animator.deltaPosition;
         deltaPosition.y = 0;
         Vector3 velocity = deltaPosition / Time.deltaTime;
-        playerLocomotion.playerRigidbody.velocity = velocity;
+        playerLocomotion.playerRigidbody.linearVelocity = velocity;
     }
    }
 
