@@ -10,6 +10,13 @@ public class PlayerLocomotion : MonoBehaviour
     Transform cameraObject;
     public Rigidbody playerRigidbody;
 
+    [Header("Camera Transform")]
+    public Transform cameraHolderTransform;
+    
+    [Header("Rotation Variables")]
+    Quaternion targetRotation; //place we want to rotate
+    Quaternion playerRotation; //player we are rotating now, constantly changing
+    
     [Header("Falling")]
     public float inAirTimer;
     public float leapingVelocity;
@@ -26,7 +33,7 @@ public class PlayerLocomotion : MonoBehaviour
     public float walkingSpeed = 1.5f;
     public float runningSpeed = 7;
     public float sprintingSpeed = 7;
-    public float rotationSpeed = 15;
+    public float rotationSpeed = 3.5f;
 
     [Header("Jump Speeds")]
     public float jumpHeight = 3;
@@ -106,6 +113,14 @@ public class PlayerLocomotion : MonoBehaviour
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
+        
+        targetRotation = Quaternion.Euler(0, cameraHolderTransform.eulerAngles.y, 0);
+        playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        
+        if (inputManager.cameraInputX != 0 || inputManager.cameraInputY != 0)
+        {
+            transform.rotation = playerRotation;
+        }
 
     }
 
