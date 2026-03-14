@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: e10b74ec7cbfb42ce8211c0a32b7d1d3
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Materials/GM-Grid-05-URP.mat
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:8dbbc91a4eda90a448fb369c6f990663fd3b9ab76972e54ef024cff9465e19bd
+size 388

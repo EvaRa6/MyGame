@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 40fd32eec57924d5dadf8f7a6800d45a
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2655988077585873504
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/Presets/FBX-Import.preset
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:012db06a104de37e508e855d384651401fc0464b07e6ea805993baa8453cb44b
+size 393

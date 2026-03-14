@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 9bcbad10823d47140bc0c90bfc339f4e
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Rollinghills01_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:432a79e382cc43b0c709b7c251e8928f1d09cd527b35ec3c04e93ac84a069b06
+size 429

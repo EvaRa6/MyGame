@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: b7a9bc6acd2eaa941ab64d230864a316
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 31900000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 154271
-  packageName: Human Basic Motions FREE
-  packageVersion: 2.4.1
-  assetPath: Assets/Kevin Iglesias/Human Animations/Models/Avatar Masks/Hands/Human
-    Hand Left Mask.mask
-  uploadId: 825236
+version https://git-lfs.github.com/spec/v1
+oid sha256:b9809437bf3e33dd3c4ad0ac35336e2267279294da1eafe284c179cd1c1546cc
+size 436

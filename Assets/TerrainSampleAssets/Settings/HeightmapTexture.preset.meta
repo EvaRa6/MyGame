@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 3673edd4bef6add4aaf606245092507c
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2655988077585873504
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Settings/HeightmapTexture.preset
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:1e6a07bb22eb2a9b3c899e260abf207e72eb2f37e6a65f754864f96adc96856f
+size 418

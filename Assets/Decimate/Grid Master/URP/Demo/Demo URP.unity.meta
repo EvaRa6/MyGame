@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: ab2b67787e3e84b49bd08da7038ad7ec
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Demo/Demo URP.unity
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:91031de9fbabd2090c542f21b7cbab65ab121bc7038321bd16344340bc29be7c
+size 346

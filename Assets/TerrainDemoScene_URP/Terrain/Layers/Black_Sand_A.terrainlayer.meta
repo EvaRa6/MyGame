@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 823d80b2a8eb07748b59d1aa37a1e7fb
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 8574412962073106934
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Terrain/Layers/Black_Sand_A.terrainlayer
-  uploadId: 727820
+version https://git-lfs.github.com/spec/v1
+oid sha256:d1641c76cb8eb1cc31776f53efd04fdd2021a30a9035945a573360b6d9ac071b
+size 427

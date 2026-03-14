@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: b273de0d6e5818a4cb3195ce4f376ccb
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Prefabs/Bush_B.prefab
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:5808be69dc7ed61f47b977e5d47d39a30b74f543039adf0ce5ec412706487a41
+size 361

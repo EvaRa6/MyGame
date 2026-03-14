@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: af4397b7afee343e8990a31d620cc57a
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Prefabs/GM-Base.prefab
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:a9d89ab138777845d7966b2c5564d76425478878be85752e612ebf7c2643ecea
+size 348

@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: dcb364d4d92aa0c47bd0441a093b0b55
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 8574412962073106934
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Terrain/Layers/Tidal_Pools_B.terrainlayer
-  uploadId: 727820
+version https://git-lfs.github.com/spec/v1
+oid sha256:0ea1d1ebd00bf0bc8aaa59825a19dbc9671f44f534fb8f04c00b3da88b53a0d5
+size 428

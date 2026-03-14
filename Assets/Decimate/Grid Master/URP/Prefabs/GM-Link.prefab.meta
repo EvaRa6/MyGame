@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 7cc215e5593f24ee1ba1cadef422b74e
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Prefabs/GM-Link.prefab
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:d80939f2ff87d247ded2f2a2edbfc686576102cf0b937bfcfc48d2c444b64186
+size 348

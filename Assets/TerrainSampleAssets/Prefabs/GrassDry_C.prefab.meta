@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 8aa8def6286fc784ba128570ec475974
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Prefabs/GrassDry_C.prefab
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:47343b87c42db2561f6872cf53640cb6cdd5b66f66336ca9ef770c3eac85b088
+size 374

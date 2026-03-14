@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: dd902ff2a6f685041be127af00c09664
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Prefabs/Heather_B.prefab
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:8bd53969597813969e725e179ef7422d2e27098b6470d61c1f0058d18262dd30
+size 364

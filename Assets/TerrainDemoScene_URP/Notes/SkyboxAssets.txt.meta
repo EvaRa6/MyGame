@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: ed5c606f25b650d42a5d09c6707ec94c
-TextScriptImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Notes/SkyboxAssets.txt
-  uploadId: 727820
+version https://git-lfs.github.com/spec/v1
+oid sha256:a75f8e9ef52f4e9f8fe9e3715bfa2d1c7c2f0c5603f16aa5eaeeb3bae3e6a4e8
+size 367

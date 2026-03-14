@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: d4e29f095247ea040aabee8a6cb3b010
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Canyon03_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:07ea8b0c3879db352a13246fefa8a07c940e978c4befe611c02bc2da0b0e0ba8
+size 423

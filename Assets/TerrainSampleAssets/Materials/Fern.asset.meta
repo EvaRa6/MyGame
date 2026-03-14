@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 405b9ff318b139d478492b258cc6f606
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Materials/Fern.asset
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:2f0b21604a97ec15fe7cfbd8ae5c70aa69ad897ff9ba6abcb82ab1a55224aa23
+size 394

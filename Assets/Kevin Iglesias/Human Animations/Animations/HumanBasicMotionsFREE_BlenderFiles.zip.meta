@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 1b131c154aa621d409658ba4ed1c84c3
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 154271
-  packageName: Human Basic Motions FREE
-  packageVersion: 2.4.1
-  assetPath: Assets/Kevin Iglesias/Human Animations/Animations/HumanBasicMotionsFREE_BlenderFiles.zip
-  uploadId: 825236
+version https://git-lfs.github.com/spec/v1
+oid sha256:d9bb6cd4fca304ac3293175ff302c13148d243d22e360fa4065a7f4075998c44
+size 396

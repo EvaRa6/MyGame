@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 013e11dc1ceff254282379cbb8cb530f
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 9100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 154271
-  packageName: Human Basic Motions FREE
-  packageVersion: 2.4.1
-  assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Basic
-    Motions/AnimatorControllers/HumanM@Talking.controller
-  uploadId: 825236
+version https://git-lfs.github.com/spec/v1
+oid sha256:06cdc960e65308d100c17bc3b92918eabeb93c85a976484084a7a07703d008bb
+size 467

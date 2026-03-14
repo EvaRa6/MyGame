@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 22ed14c1b59179c4392f6c57702fca32
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2800000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_2.asset
-  uploadId: 727820
+version https://git-lfs.github.com/spec/v1
+oid sha256:56d747ce8c3c7b8b87ce704a933845e0d386361e94d12b3920b61da302c4a4c3
+size 451

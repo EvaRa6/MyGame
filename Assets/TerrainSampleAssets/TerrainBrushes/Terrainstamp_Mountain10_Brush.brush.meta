@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: a84a003f62212dd48b832a72ba178a49
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Mountain10_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:56081b3750b7615b78fa1a632cbe62f245e65d3f959a80b6fc95103dcbc1e95d
+size 425

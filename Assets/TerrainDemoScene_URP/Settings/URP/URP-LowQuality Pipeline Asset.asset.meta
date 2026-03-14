@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 758559729899d1340bf85e82688a079f
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Settings/URP/URP-LowQuality Pipeline Asset.asset
-  uploadId: 727820
+version https://git-lfs.github.com/spec/v1
+oid sha256:1e4acbfda7a7df61deb97590d36fbb26596eabf27118b9f94ac91e8a702e06d7
+size 424

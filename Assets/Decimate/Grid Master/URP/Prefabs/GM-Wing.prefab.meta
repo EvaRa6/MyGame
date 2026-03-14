@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 4bd6eaca8c9174d06801be4163fc96cc
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Prefabs/GM-Wing.prefab
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:8532116cb201ed141d0febf87fded5e10f10a89a5ac5cbb44056d05baedda28f
+size 348

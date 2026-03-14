@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 4bbbe659961263d4390b9322f0328fe0
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Slope03_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:4a219798ac06e504b6c1a0f98f47d8d308765a44e34b07dba7b388b022a57018
+size 422

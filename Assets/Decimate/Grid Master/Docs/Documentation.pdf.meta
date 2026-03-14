@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 823afb3ddae4c44b9973df67e456d072
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/Docs/Documentation.pdf
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:e93dab490c81c0865d2b5e544ab682426ae7d08d1593f67953e10883119aaed0
+size 345

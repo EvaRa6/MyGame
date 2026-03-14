@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: d1685375fd84e62439c572449faa4657
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 8574412962073106934
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainLayers/Pebbles_B_TerrainLayer.terrainlayer
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:361cbe2fd0997ddf969a60504beeea76371234681ce052525ceaa2bd9879b2cc
+size 445

@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 52ed55fadd8d2b34cb0f9f08adb04a84
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Island01_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:1f6c1b040f5226cb65f7c8c6837db1b31d5ada164163e1f8cd63fdb6208ec025
+size 423

@@ -1,17 +1,3 @@
-fileFormatVersion: 2
-guid: baa12ab73b962474eb9afea9483e1f0f
-ScriptedImporter:
-  internalIDToNameTable: []
-  externalObjects: {}
-  serializedVersion: 2
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-  script: {fileID: 11500000, guid: 60072b568d64c40a485e0fc55012dc9f, type: 3}
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/ShaderGraphs/Subgraphs/AnimatedGrassPhase.shadersubgraph
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:0785512fb4cb5540f5c742f1440cf489cb9f20838d89887b26b584d2989f66b0
+size 527

@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 256725621b381c1499770f1bfde58348
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 9100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 154271
-  packageName: Human Basic Motions FREE
-  packageVersion: 2.4.1
-  assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Basic
-    Motions/AnimatorControllers/HumanF@Turn01_Right [RM].controller
-  uploadId: 825236
+version https://git-lfs.github.com/spec/v1
+oid sha256:7a286aaeb24be89e93694bdefbe8460b51ce5975840e958afaadde9b00a02fcf
+size 477

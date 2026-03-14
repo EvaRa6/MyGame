@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 0a8f66bcd8b614e539c35c96deae3bce
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Prefabs/GM-Hex.prefab
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:86f6a7273ce32cca86c74a809fa98a634f3edb9b54711bf399270d2d53ef59ec
+size 347

@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 7eae67bc3f75e02478ed0f5c2d4498cf
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Softpeaks01_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:2762fa16bd0f2c8e6cac73cc03b9bc610ae62f1d00ee21f80e68f66b52210497
+size 426

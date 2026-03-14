@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 7db9faeb62ddc3a458c6f038212fd67f
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 8574412962073106934
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 213197
-  packageName: Unity Terrain - URP Demo Scene
-  packageVersion: 1.0.3
-  assetPath: Assets/TerrainDemoScene_URP/Terrain/Layers/Grass_B.terrainlayer
-  uploadId: 727820
+version https://git-lfs.github.com/spec/v1
+oid sha256:1bd4ff43c957e10d0a5e7815397ab70c1f950ee390e8064870e1c1daedcd0c18
+size 422

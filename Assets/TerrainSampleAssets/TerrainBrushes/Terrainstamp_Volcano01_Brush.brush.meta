@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: e5a2f11e9d7a4da4caf17b3e59800215
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Volcano01_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:0aeb86d05fc6455cfb7b82b55e4020aa548483cc1c98d509c00c500f79bf4411
+size 424

@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: c997c17aa360cb749a27932fe3bdfcce
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 8574412962073106934
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainLayers/Rock_TerrainLayer.terrainlayer
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:106dc52e95959c4825b9052f7e5fd07353b0ab7e0a5a20eae363819db5f69ce1
+size 440

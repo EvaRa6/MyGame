@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 210699a1a51ee44488f7250860efd951
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Prefabs/GM-Ramp.prefab
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:6518b4dcb909c6bf37f36df135ec5cfc5e848b25940de0eaf7ecd01e42cdc699
+size 348

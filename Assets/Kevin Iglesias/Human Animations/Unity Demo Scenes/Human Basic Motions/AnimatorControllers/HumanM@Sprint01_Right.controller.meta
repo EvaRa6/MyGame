@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 96fc0a1d7aa3fd847a88fb565cb8a292
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 9100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 154271
-  packageName: Human Basic Motions FREE
-  packageVersion: 2.4.1
-  assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Basic
-    Motions/AnimatorControllers/HumanM@Sprint01_Right.controller
-  uploadId: 825236
+version https://git-lfs.github.com/spec/v1
+oid sha256:73607f98df86674df110ca01ca9fb3056b9f7b6e3046ff886be7fc7138a8394e
+size 474

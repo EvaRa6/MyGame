@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: b4f1a8962849d1e418cbb0637143dc00
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Erode02_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:b85db024a4e42c1434726b3be63e809292333a52983bffe5eb94eeaaeec9f25e
+size 422

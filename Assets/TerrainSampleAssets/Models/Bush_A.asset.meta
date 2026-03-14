@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 0c4301a6ce8e5964c8df62a78aca15d1
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 4300000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Models/Bush_A.asset
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:ad9b86ec2f47e277f73f08b94ba879f995ac0ce8257de51e4017c427a26262b0
+size 393

@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 8542e129661ee4a158e2ecdc7a105573
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 286714
-  packageName: Grid Master
-  packageVersion: 1.0.1
-  assetPath: Assets/Decimate/Grid Master/URP/Prefabs/GM-Beam.prefab
-  uploadId: 840046
+version https://git-lfs.github.com/spec/v1
+oid sha256:d1207acbce3b4ef1d36dbdc793a3c08a07f79d4bb7599d09423875db02f2da87
+size 348

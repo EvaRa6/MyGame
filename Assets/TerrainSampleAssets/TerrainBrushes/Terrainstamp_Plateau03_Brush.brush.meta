@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 387141d2bd04a10459d9a306ca45434f
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Plateau03_Brush.brush
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:8289197bc8cfc18ad64f716cf280db09bdccacf57f90a18537fff49497e137a7
+size 424

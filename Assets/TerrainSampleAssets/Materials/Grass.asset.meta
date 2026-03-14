@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: fc123ab8f2eb56945b5849155624e2c0
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Materials/Grass.asset
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:b8447e3d069b557f14a92c2f7e86233dca7eccde801a2f1a2b601ca2d612aad8
+size 405

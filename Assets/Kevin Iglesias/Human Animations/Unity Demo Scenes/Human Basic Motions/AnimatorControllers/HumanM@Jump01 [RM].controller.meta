@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 2041c0db49de8e94ea644176ce03232c
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 9100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 154271
-  packageName: Human Basic Motions FREE
-  packageVersion: 2.4.1
-  assetPath: Assets/Kevin Iglesias/Human Animations/Unity Demo Scenes/Human Basic
-    Motions/AnimatorControllers/HumanM@Jump01 [RM].controller
-  uploadId: 825236
+version https://git-lfs.github.com/spec/v1
+oid sha256:e0acdbb14023c059760b316068359b2815a3ca802af7301f922f270851a55515
+size 471

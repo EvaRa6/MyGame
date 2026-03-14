@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 6d6ea10f03c4d7245a66d6515bf1bc6d
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Prefabs/Plant_A.prefab
-  uploadId: 511657
+version https://git-lfs.github.com/spec/v1
+oid sha256:99071da70fbac95363833d6447ac6e114a94f98b5a080c50d90bb692d361ddcd
+size 371
