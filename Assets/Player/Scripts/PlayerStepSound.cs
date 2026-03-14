@@ -3,47 +3,46 @@ using UnityEngine;
 
 public class PlayerStepSound: MonoBehaviour
 {
-    public AudioSource audioSource;
-
-    [Header("Walk Sounds")]
-    public AudioClip[] walkClips;
-
-    [Header("Run Sounds")]
-    public AudioClip[] runClips;
+    [Header("Audio")]
+    public AudioSource audioSource;        // AudioSource на игроке
+    public AudioClip[] walkClips;          // звуки ходьбы
+    public AudioClip[] runClips;           // звуки бега
 
     [Header("Step Settings")]
-    public float walkStepRate = 0.5f; 
-    public float runStepRate = 0.35f;
+    public float walkStepRate = 0.5f;      // время между шагами
+    public float runStepRate = 0.35f;      // время между шагами
 
+    private Rigidbody rb;
     private float stepTimer = 0f;
-    private bool isMoving = false;
-    private bool isRunning = false;
-
-    private CharacterController controller;
 
     void Start()
     {
+        // если не привязан, создаём AudioSource
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
 
-        controller = GetComponent<CharacterController>();
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 1f; // 3D звук
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (controller == null) return;
+        if (rb == null) return;
 
-        Vector3 horizontalVelocity = new Vector3(controller.velocity.x, 0, controller.velocity.z);
-        isMoving = horizontalVelocity.magnitude > 0.1f;
+        // движение по горизонтали
+        Vector3 horizontalVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        bool isMoving = horizontalVel.magnitude > 0.1f;
 
-        isRunning = Input.GetKey(KeyCode.LeftShift); 
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
 
         if (isMoving)
         {
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f)
             {
-                PlayStepSound();
+                PlayStepSound(isRunning);
                 stepTimer = isRunning ? runStepRate : walkStepRate;
             }
         }
@@ -53,12 +52,13 @@ public class PlayerStepSound: MonoBehaviour
         }
     }
 
-    void PlayStepSound()
+    void PlayStepSound(bool running)
     {
-        AudioClip[] clips = isRunning ? runClips : walkClips;
+        AudioClip[] clips = running ? runClips : walkClips;
         if (clips.Length == 0) return;
 
         int index = Random.Range(0, clips.Length);
+        audioSource.pitch = Random.Range(0.9f, 1.1f); // случайный pitch
         audioSource.PlayOneShot(clips[index]);
     }
 }
