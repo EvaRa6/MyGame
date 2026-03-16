@@ -1,56 +1,50 @@
-using System;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
     public InputManager inputManager;
-    
-    public Transform cameraPivot;
-    public Camera cameraObject;
-    public GameObject player;
-    
-    Vector3 cameraFollowVelocity = Vector3.zero;
-    Vector3 targetPosition;
-    Vector3 cameraRotation;
-    Quaternion targetRotation;
-    
-    [Header("Camera Speeds")]
-    public float cameraSmoothTime = 0.2f;
-    
-    float lookAmountVertical;
-    float lookAmountHorizontal;
-    float maximumPivotAngle = 15;
-    float minimumPivotAngle = -15;
-    
 
+    public Transform cameraPivot;   // pivot для вертикального вращения
+    public Camera cameraObject;
+    public Transform player;        // Transform игрока
+
+    [Header("Camera Settings")]
+    public float followSpeed = 10f;       // скорость следования камеры
+    public float rotateSpeed = 5f;        // скорость вращения камеры
+    public Vector3 cameraOffset = new Vector3(0, 1.8f, -3f); // смещение камеры от игрока
+
+    private float lookHorizontal;
+    private float lookVertical;
+    private float minVertical = -35f;
+    private float maxVertical = 60f;
+
+    // Для совместимости с PlayerManager
     public void HandleAllCameraMovement()
     {
         FollowPlayer();
         RotateCamera();
     }
-    
+
     private void FollowPlayer()
     {
-        targetPosition = Vector3.SmoothDamp(transform.position, player.transform.position, ref cameraFollowVelocity, cameraSmoothTime * Time.deltaTime);
-        transform.position = targetPosition;
+        // Камера всегда находится позади игрока + offset
+        Vector3 desiredPosition = player.position + new Vector3(0, cameraOffset.y, 0) + player.forward * cameraOffset.z;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
     }
 
     private void RotateCamera()
     {
-        lookAmountVertical = lookAmountVertical + (inputManager.cameraInputX);
-        lookAmountHorizontal = lookAmountHorizontal - (inputManager.cameraInputY);
-        lookAmountHorizontal = Mathf.Clamp(lookAmountHorizontal, minimumPivotAngle, maximumPivotAngle);
+        // Свайп пальцем
+        lookHorizontal += inputManager.cameraInputX;
+        lookVertical -= inputManager.cameraInputY;
+        lookVertical = Mathf.Clamp(lookVertical, minVertical, maxVertical);
 
-        cameraRotation = Vector3.zero;
-        cameraRotation.y = lookAmountVertical;
-        targetRotation = Quaternion.Euler(cameraRotation);
-        targetRotation = Quaternion.Slerp(transform.rotation, targetRotation, cameraSmoothTime);
-        transform.rotation = targetRotation;
-        
-        cameraRotation = Vector3.zero;
-        cameraRotation.x = lookAmountHorizontal;
-        targetRotation = Quaternion.Euler(cameraRotation);
-        targetRotation = Quaternion.Slerp(cameraPivot.localRotation, targetRotation, cameraSmoothTime);
-        cameraPivot.localRotation = targetRotation;
+        // Поворот игрока по горизонтали
+        Quaternion playerRotation = Quaternion.Euler(0, lookHorizontal, 0);
+        player.rotation = Quaternion.Slerp(player.rotation, playerRotation, rotateSpeed * Time.deltaTime);
+
+        // Поворот камеры по вертикали через pivot (голова)
+        Quaternion pivotRotation = Quaternion.Euler(lookVertical, 0, 0);
+        cameraPivot.localRotation = Quaternion.Slerp(cameraPivot.localRotation, pivotRotation, rotateSpeed * Time.deltaTime);
     }
 }

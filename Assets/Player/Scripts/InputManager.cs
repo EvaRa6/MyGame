@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
+    public FixedJoystick joystick;
 
     public float cameraInputX;
     public float cameraInputY;
@@ -25,14 +26,14 @@ public class InputManager : MonoBehaviour
     public bool x_Input;
     public bool jump_Input;
     public bool interactionInput;
-
+    public bool isSprintingToggle; // тумблер спринта
 
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
     }
-    
+
     private void OnEnable()
     {
         if (playerControls == null)
@@ -52,7 +53,6 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Interact.performed += i => interactionInput = true;
         }
 
-
         playerControls.Enable();
     }
 
@@ -70,29 +70,33 @@ public class InputManager : MonoBehaviour
         HandleInteractionInput();
         HandleTouchCamera();
     }
-    
+
     private void HandleMovementInput()
     {
-        verticalInput = movementInput.y;
-        horizontalInput = movementInput.x;
+        verticalInput = movementInput.y + joystick.Vertical;
+        horizontalInput = movementInput.x + joystick.Horizontal;
 
         cameraInputX = cameraInput.x;
         cameraInputY = cameraInput.y;
 
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        animatorManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isSprinting);
+        animatorManager.UpdateAnimatorValues(horizontalInput, verticalInput, playerLocomotion.isSprinting);
     }
 
     private void HandleSprintingInput()
     {
-        if (b_Input && moveAmount > 0.5f)
-        {
-            playerLocomotion.isSprinting = true;
-        }
-        else
-        {
-            playerLocomotion.isSprinting = false;
-        }
+        // Тумблер спринта
+        playerLocomotion.isSprinting = isSprintingToggle && moveAmount > 0;
+    }
+
+    public void OnSprintButtonPressed()
+    {
+        isSprintingToggle = !isSprintingToggle; // переключение состояния спринта
+    }
+
+    public void OnJumpButtonPressed()
+    {
+        jump_Input = true; // активируем прыжок
     }
 
     private void HandleJumpingInput()
@@ -121,29 +125,25 @@ public class InputManager : MonoBehaviour
             {
                 interactionInput = false;
             }
-        } 
+        }
     }
 
     private void HandleTouchCamera()
-{
-    if (Input.touchCount > 0)
     {
-        Touch touch = Input.GetTouch(0);
-
-        Debug.Log("Touch detected");
-
-        if (touch.phase == TouchPhase.Moved)
+        if (Input.touchCount > 0)
         {
-            cameraInputX = touch.deltaPosition.x * touchSensitivity;
-            cameraInputY = touch.deltaPosition.y * touchSensitivity;
+            Touch touch = Input.GetTouch(0);
 
-            Debug.Log("Touch moving: " + cameraInputX + " " + cameraInputY);
+            if (touch.phase == TouchPhase.Moved)
+            {
+                cameraInputX = touch.deltaPosition.x * touchSensitivity;
+                cameraInputY = touch.deltaPosition.y * touchSensitivity;
+            }
         }
 
-        #if UNITY_EDITOR
-cameraInputX = Input.GetAxis("Mouse X") * 2f;
-cameraInputY = Input.GetAxis("Mouse Y") * 2f;
+#if UNITY_EDITOR
+        cameraInputX = Input.GetAxis("Mouse X") * 2f;
+        cameraInputY = Input.GetAxis("Mouse Y") * 2f;
 #endif
     }
-}
 }
