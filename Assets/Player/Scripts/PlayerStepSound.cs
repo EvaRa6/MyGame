@@ -32,7 +32,7 @@ public class PlayerStepSound: MonoBehaviour
         if (rb == null) return;
 
         // движение по горизонтали
-        Vector3 horizontalVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        Vector3 horizontalVel = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         bool isMoving = horizontalVel.magnitude > 0.1f;
 
         bool isRunning = Input.GetKey(KeyCode.LeftShift);

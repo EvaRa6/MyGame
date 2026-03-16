@@ -5,33 +5,36 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    private AudioSource sfxSource;
+    private AudioSource musicSource;
+
     private void Awake()
     {
-        if (instance == null)
-    {
-        instance = this;
+        if(instance == null) instance = this;
+        else Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
+
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.loop = true;
+        musicSource.spatialBlend = 0;
     }
-    else
+
+    public void PlaySFX(AudioClip clip, float volume = 1f)
     {
-        Destroy(gameObject);
-    }
+        sfxSource.PlayOneShot(clip, volume);
     }
 
-    public void PlaySFX(AudioClip audioClip, float volume = 1f)
+    public void PlayMusic(AudioClip clip, float volume = 0.5f)
     {
-        StartCoroutine(PlaySFXCoroutine(audioClip, volume));
+        musicSource.clip = clip;
+        musicSource.volume = volume;
+        musicSource.Play();
     }
 
-    IEnumerator PlaySFXCoroutine(AudioClip audioClip, float volume = 1f)
+    public void StopMusic()
     {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = audioClip;
-        audioSource.volume = volume;
-        audioSource.Play();
-
-        yield return new WaitForSeconds(audioSource.clip.length);
-
-        Destroy(audioSource);
+        musicSource.Stop();
     }
 }

@@ -15,6 +15,8 @@ public class InputManager : MonoBehaviour
     public float cameraInputX;
     public float cameraInputY;
 
+    public float touchSensitivity = 0.1f;
+
     public float moveAmount;
     public float verticalInput;
     public float horizontalInput;
@@ -66,6 +68,7 @@ public class InputManager : MonoBehaviour
         HandleJumpingInput();
         HandleDodgeInput();
         HandleInteractionInput();
+        HandleTouchCamera();
     }
     
     private void HandleMovementInput()
@@ -120,4 +123,27 @@ public class InputManager : MonoBehaviour
             }
         } 
     }
+
+    private void HandleTouchCamera()
+{
+    if (Input.touchCount > 0)
+    {
+        Touch touch = Input.GetTouch(0);
+
+        Debug.Log("Touch detected");
+
+        if (touch.phase == TouchPhase.Moved)
+        {
+            cameraInputX = touch.deltaPosition.x * touchSensitivity;
+            cameraInputY = touch.deltaPosition.y * touchSensitivity;
+
+            Debug.Log("Touch moving: " + cameraInputX + " " + cameraInputY);
+        }
+
+        #if UNITY_EDITOR
+cameraInputX = Input.GetAxis("Mouse X") * 2f;
+cameraInputY = Input.GetAxis("Mouse Y") * 2f;
+#endif
+    }
+}
 }

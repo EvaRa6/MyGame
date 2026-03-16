@@ -482,8 +482,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 826.4, y: 0}
-  m_SizeDelta: {x: 800, y: 376}
+  m_AnchoredPosition: {x: 504.4, y: 0}
+  m_SizeDelta: {x: 400, y: 188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &326834297
 MonoBehaviour:
@@ -750,7 +750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -158, y: -74}
+  m_AnchoredPosition: {x: -229.4, y: -125.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332384689
@@ -870,7 +870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &364588213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,8 +1092,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 329.9, y: -143}
-  m_SizeDelta: {x: 250, y: 192}
+  m_AnchoredPosition: {x: 190, y: -135}
+  m_SizeDelta: {x: 125, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419633892
 MonoBehaviour:
@@ -1279,12 +1279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1818,22 +1818,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &798756437
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798756431}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 3576323149332540633, guid: 2c86f795636ce7b41872d98d4e732705, type: 3}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!4 &831115950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2121133574499239361, guid: 73f28c086900b7044a976a0ee2d1bb13, type: 3}
@@ -2130,8 +2114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -876.5, y: 0}
-  m_SizeDelta: {x: 800, y: 376}
+  m_AnchoredPosition: {x: -512.8, y: 0}
+  m_SizeDelta: {x: 400, y: 188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067106813
 MonoBehaviour:
@@ -2594,9 +2578,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c86f795636ce7b41872d98d4e732705, type: 3}
       insertIndex: -1
       addedObject: {fileID: 798756434}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c86f795636ce7b41872d98d4e732705, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 798756437}
   m_SourcePrefab: {fileID: 100100000, guid: 2c86f795636ce7b41872d98d4e732705, type: 3}
 --- !u!1001 &1679743170
 PrefabInstance:
