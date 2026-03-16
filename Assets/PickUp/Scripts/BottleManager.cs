@@ -24,7 +24,7 @@ public class BottleManager : MonoBehaviour
     {
         bottles += amount;
         if (bottleText != null)
-            bottleText.text = "Bottles: " + bottles;
+            bottleText.text = " " + bottles;
         else
             Debug.LogWarning("Bottle Text is not assigned!");
     }
