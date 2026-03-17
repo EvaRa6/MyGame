@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
     public InputManager inputManager;
     CameraManager cameraManager;
     PlayerLocomotion playerLocomotion;
-    
+
     public bool isInteracting;
     public bool canInteract;
     public bool isUsingRootMotion;

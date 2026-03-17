@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerLocomotion : MonoBehaviour
 {
     PlayerManager playerManager;
-    public AnimatorManager animatorManager;
-    public InputManager inputManager;
+    AnimatorManager animatorManager;
+    InputManager inputManager;
 
     Vector3 moveDirecton;
     Transform cameraObject;
@@ -13,20 +13,9 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Camera Transform")]
     public Transform cameraHolderTransform;
 
-    [Header("Movement Flags")]
-    public bool isSprinting;
-    public bool isGrounded;
-    public bool isJumping;
-
-    [Header("Movement Speeds")]
-    public float walkingSpeed = 1.5f;
-    public float runningSpeed = 4f;
-    public float sprintingSpeed = 7f;
-    public float rotationSpeed = 7f;
-
-    [Header("Jump/Gravity")]
-    public float jumpHeight = 3f;
-    public float gravityIntensity = -15f;
+    [Header("Rotation Variables")]
+    Quaternion targetRotation; //place we want to rotate
+    Quaternion playerRotation; //player we are rotating now, constantly changing
 
     [Header("Falling")]
     public float inAirTimer;
@@ -34,6 +23,21 @@ public class PlayerLocomotion : MonoBehaviour
     public float falllingVelocity;
     public float rayCastHeightOffSet = 0.5f;
     public LayerMask groundedLayer;
+
+    [Header("Movement Flags")]
+    public bool isSprinting;
+    public bool isGrounded;
+    public bool isJumping;
+
+    [Header("Movement Speeds")]
+    public float walkingSpeed = 1.5f;
+    public float runningSpeed = 7;
+    public float sprintingSpeed = 7;
+    public float rotationSpeed = 3.5f;
+
+    [Header("Jump Speeds")]
+    public float jumpHeight = 3;
+    public float gravityIntensity = -15;
 
     private void Awake()
     {
@@ -55,28 +59,39 @@ public class PlayerLocomotion : MonoBehaviour
         HandleRotation();
     }
 
+
     private void HandleMovement()
     {
         if (isJumping)
             return;
 
-        // Направление движения относительно камеры
         moveDirecton = cameraObject.forward * inputManager.verticalInput;
-        moveDirecton += cameraObject.right * inputManager.horizontalInput;
+        moveDirecton = moveDirecton + cameraObject.right * inputManager.horizontalInput;
         moveDirecton.Normalize();
         moveDirecton.y = 0;
 
-        // Выбираем скорость
-        float speed = walkingSpeed;
-        if (isSprinting) speed = sprintingSpeed;
-        else if (inputManager.moveAmount > 0.5f) speed = runningSpeed;
 
-        moveDirecton *= speed;
+        if (isSprinting)
+        {
+            moveDirecton = moveDirecton * sprintingSpeed;
+        }
+        else
+        {
+            if (inputManager.moveAmount >= 0.5f)
+            {
+                moveDirecton = moveDirecton * runningSpeed;
+            }
+            else
+            {
+                moveDirecton = moveDirecton * walkingSpeed;
+            }
+        }
 
-        // Применяем к Rigidbody, сохраняя вертикальную скорость
-        Vector3 vel = moveDirecton;
-        vel.y = playerRigidbody.velocity.y;
-        playerRigidbody.velocity = vel;
+
+        moveDirecton = moveDirecton * runningSpeed;
+
+        Vector3 movementVelocity = moveDirecton;
+        playerRigidbody.linearVelocity = movementVelocity;
     }
 
     private void HandleRotation()
@@ -84,8 +99,10 @@ public class PlayerLocomotion : MonoBehaviour
         if (isJumping)
             return;
 
-        Vector3 targetDirection = cameraObject.forward * inputManager.verticalInput;
-        targetDirection += cameraObject.right * inputManager.horizontalInput;
+        Vector3 targetDirection = Vector3.zero;
+
+        targetDirection = cameraObject.forward * inputManager.verticalInput;
+        targetDirection = targetDirection + cameraObject.right * inputManager.horizontalInput;
         targetDirection.Normalize();
         targetDirection.y = 0;
 
@@ -93,7 +110,18 @@ public class PlayerLocomotion : MonoBehaviour
             targetDirection = transform.forward;
 
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        transform.rotation = playerRotation;
+
+        targetRotation = Quaternion.Euler(0, cameraHolderTransform.eulerAngles.y, 0);
+        playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        if (inputManager.cameraInputX != 0 || inputManager.cameraInputY != 0)
+        {
+            transform.rotation = playerRotation;
+        }
+
     }
 
     private void HandleFallingAndLanding()
@@ -101,7 +129,7 @@ public class PlayerLocomotion : MonoBehaviour
         RaycastHit hit;
         Vector3 rayCastOrigin = transform.position;
         Vector3 targetPosition;
-        rayCastOrigin.y += rayCastHeightOffSet;
+        rayCastOrigin.y = rayCastOrigin.y + rayCastHeightOffSet;
         targetPosition = transform.position;
 
         if (!isGrounded && !isJumping)
@@ -112,7 +140,7 @@ public class PlayerLocomotion : MonoBehaviour
             }
 
             animatorManager.animator.SetBool("isUsingRootMotion", false);
-            inAirTimer += Time.deltaTime;
+            inAirTimer = inAirTimer + Time.deltaTime;
             playerRigidbody.AddForce(transform.forward * leapingVelocity);
             playerRigidbody.AddForce(-Vector3.up * falllingVelocity * inAirTimer);
         }
@@ -120,22 +148,32 @@ public class PlayerLocomotion : MonoBehaviour
         if (Physics.SphereCast(rayCastOrigin, 0.2f, -Vector3.up, out hit, groundedLayer))
         {
             if (!isGrounded && !playerManager.isInteracting)
+            {
                 animatorManager.PlayTargetAnimation("Land", true);
+            }
 
             Vector3 rayCastHitPoint = hit.point;
             targetPosition.y = rayCastHitPoint.y;
             inAirTimer = 0;
             isGrounded = true;
+
         }
+
         else
+        {
             isGrounded = false;
+        }
 
         if (isGrounded && !isJumping)
         {
             if (playerManager.isInteracting || inputManager.moveAmount > 0)
+            {
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.1f);
+            }
             else
+            {
                 transform.position = targetPosition;
+            }
         }
     }
 
@@ -143,14 +181,13 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (isGrounded)
         {
-            isJumping = true;
             animatorManager.animator.SetBool("isJumping", true);
             animatorManager.PlayTargetAnimation("Jump", false);
 
             float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
-            Vector3 vel = moveDirecton;
-            vel.y = jumpingVelocity;
-            playerRigidbody.velocity = vel;
+            Vector3 playerVelocity = moveDirecton;
+            playerVelocity.y = jumpingVelocity;
+            playerRigidbody.linearVelocity = playerVelocity;
         }
     }
 
@@ -160,5 +197,6 @@ public class PlayerLocomotion : MonoBehaviour
             return;
 
         animatorManager.PlayTargetAnimation("Dodge", true, true);
+        //TOGGLE invulnerable bool for no HP damage during animation
     }
 }

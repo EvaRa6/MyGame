@@ -5,13 +5,12 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     PlayerControls playerControls;
-    public PlayerLocomotion playerLocomotion;
-    public AnimatorManager animatorManager;
+    PlayerLocomotion playerLocomotion;
+    AnimatorManager animatorManager;
     public PlayerManager player;
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
-    public FixedJoystick joystick;
 
     public float cameraInputX;
     public float cameraInputY;
@@ -26,7 +25,7 @@ public class InputManager : MonoBehaviour
     public bool x_Input;
     public bool jump_Input;
     public bool interactionInput;
-    public bool isSprintingToggle; // тумблер спринта
+
 
     private void Awake()
     {
@@ -53,6 +52,7 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Interact.performed += i => interactionInput = true;
         }
 
+
         playerControls.Enable();
     }
 
@@ -73,32 +73,26 @@ public class InputManager : MonoBehaviour
 
     private void HandleMovementInput()
     {
-        verticalInput = movementInput.y + joystick.Vertical;
-        horizontalInput = movementInput.x + joystick.Horizontal;
+        verticalInput = movementInput.y;
+        horizontalInput = movementInput.x;
 
         cameraInputX = cameraInput.x;
         cameraInputY = cameraInput.y;
 
-        // moveAmount = сила движения (для анимаций)
-        moveAmount = Mathf.Clamp01(Mathf.Sqrt(horizontalInput * horizontalInput + verticalInput * verticalInput));
-
+        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
         animatorManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isSprinting);
     }
 
     private void HandleSprintingInput()
     {
-        // Тумблер спринта: включен и есть движение
-        playerLocomotion.isSprinting = isSprintingToggle && moveAmount > 0;
-    }
-
-    public void OnSprintButtonPressed()
-    {
-        isSprintingToggle = !isSprintingToggle; // переключаем состояние спринта
-    }
-
-    public void OnJumpButtonPressed()
-    {
-        jump_Input = true; // активируем прыжок
+        if (b_Input && moveAmount > 0.5f)
+        {
+            playerLocomotion.isSprinting = true;
+        }
+        else
+        {
+            playerLocomotion.isSprinting = false;
+        }
     }
 
     private void HandleJumpingInput()
@@ -121,9 +115,12 @@ public class InputManager : MonoBehaviour
 
     private void HandleInteractionInput()
     {
-        if (interactionInput && !player.canInteract)
+        if (interactionInput)
         {
-            interactionInput = false;
+            if (!player.canInteract)
+            {
+                interactionInput = false;
+            }
         }
     }
 
@@ -133,16 +130,20 @@ public class InputManager : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
+            Debug.Log("Touch detected");
+
             if (touch.phase == TouchPhase.Moved)
             {
                 cameraInputX = touch.deltaPosition.x * touchSensitivity;
                 cameraInputY = touch.deltaPosition.y * touchSensitivity;
+
+                Debug.Log("Touch moving: " + cameraInputX + " " + cameraInputY);
             }
-        }
 
 #if UNITY_EDITOR
-        cameraInputX = Input.GetAxis("Mouse X") * 2f;
-        cameraInputY = Input.GetAxis("Mouse Y") * 2f;
+            cameraInputX = Input.GetAxis("Mouse X") * 2f;
+            cameraInputY = Input.GetAxis("Mouse Y") * 2f;
 #endif
+        }
     }
 }
