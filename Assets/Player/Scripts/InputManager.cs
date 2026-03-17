@@ -4,54 +4,62 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    PlayerControls playerControls;
-    PlayerLocomotion playerLocomotion;
-    AnimatorManager animatorManager;
+    [Header("References")]
     public PlayerManager player;
+    public PlayerLocomotion playerLocomotion;
+    public AnimatorManager animatorManager;
+    public CameraManager cameraManager;
 
+    [Header("Controls")]
+    public FixedJoystick joystick;
+
+    private PlayerControls playerControls;
+
+    [Header("Movement")]
     public Vector2 movementInput;
     public Vector2 cameraInput;
 
-    public float cameraInputX;
-    public float cameraInputY;
-
-    public float touchSensitivity = 0.1f;
-
-    public float moveAmount;
     public float verticalInput;
     public float horizontalInput;
+    public float moveAmount;
 
-    public bool b_Input;
-    public bool x_Input;
+    [Header("Camera")]
+    public float cameraInputX;
+    public float cameraInputY;
+    public float touchSensitivity = 0.1f;
+
+    [Header("Actions")]
+    public bool b_Input;      // Sprint toggle
+    public bool x_Input;      // Dodge
     public bool jump_Input;
     public bool interactionInput;
 
+    private bool sprintToggle; // Для переключения спринта
 
     private void Awake()
     {
-        animatorManager = GetComponent<AnimatorManager>();
-        playerLocomotion = GetComponent<PlayerLocomotion>();
+        if (!animatorManager) animatorManager = GetComponent<AnimatorManager>();
+        if (!playerLocomotion) playerLocomotion = GetComponent<PlayerLocomotion>();
     }
-    
+
     private void OnEnable()
     {
         if (playerControls == null)
         {
             playerControls = new PlayerControls();
 
+            // Movement
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
 
+            // Actions
             playerControls.PlayerActions.B.performed += i => b_Input = true;
             playerControls.PlayerActions.B.canceled += i => b_Input = false;
 
             playerControls.PlayerActions.X.performed += i => x_Input = true;
-
             playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
-
             playerControls.PlayerActions.Interact.performed += i => interactionInput = true;
         }
-
 
         playerControls.Enable();
     }
@@ -65,37 +73,35 @@ public class InputManager : MonoBehaviour
     {
         HandleMovementInput();
         HandleSprintingInput();
-        HandleJumpingInput();
+        HandleJumpInput();
         HandleDodgeInput();
         HandleInteractionInput();
-        HandleTouchCamera();
+        HandleCameraInput();
     }
-    
+
     private void HandleMovementInput()
     {
-        verticalInput = movementInput.y;
-        horizontalInput = movementInput.x;
+        // Джой + InputSystem
+        verticalInput = movementInput.y + joystick.Vertical;
+        horizontalInput = movementInput.x + joystick.Horizontal;
 
-        cameraInputX = cameraInput.x;
-        cameraInputY = cameraInput.y;
-
+        // Расчёт moveAmount для анимации
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        animatorManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isSprinting);
+
+        // Обновляем анимации (правильно: horizontal и vertical)
+        animatorManager.UpdateAnimatorValues(horizontalInput, verticalInput, playerLocomotion.isSprinting);
     }
 
     private void HandleSprintingInput()
+{
+    if (b_Input)
     {
-        if (b_Input && moveAmount > 0.5f)
-        {
-            playerLocomotion.isSprinting = true;
-        }
-        else
-        {
-            playerLocomotion.isSprinting = false;
-        }
+        b_Input = false; // сбрасываем, чтобы не спамилось
+        playerLocomotion.isSprinting = !playerLocomotion.isSprinting;
     }
+}
 
-    private void HandleJumpingInput()
+    private void HandleJumpInput()
     {
         if (jump_Input)
         {
@@ -121,29 +127,33 @@ public class InputManager : MonoBehaviour
             {
                 interactionInput = false;
             }
-        } 
+        }
     }
 
-    private void HandleTouchCamera()
+    private void HandleCameraInput()
 {
+    // Джой + InputSystem
+    cameraInputX = cameraInput.x + joystick.Horizontal;
+    cameraInputY = cameraInput.y + joystick.Vertical;
+
+    // Сенсорный ввод
     if (Input.touchCount > 0)
     {
         Touch touch = Input.GetTouch(0);
-
-        Debug.Log("Touch detected");
-
         if (touch.phase == TouchPhase.Moved)
         {
-            cameraInputX = touch.deltaPosition.x * touchSensitivity;
-            cameraInputY = touch.deltaPosition.y * touchSensitivity;
-
-            Debug.Log("Touch moving: " + cameraInputX + " " + cameraInputY);
+            cameraInputX += touch.deltaPosition.x * touchSensitivity;
+            cameraInputY += touch.deltaPosition.y * touchSensitivity;
         }
-
-        #if UNITY_EDITOR
-cameraInputX = Input.GetAxis("Mouse X") * 2f;
-cameraInputY = Input.GetAxis("Mouse Y") * 2f;
-#endif
     }
+
+    // Мышь (для редактора)
+#if UNITY_EDITOR
+    cameraInputX += Input.GetAxis("Mouse X") * 2f;
+    cameraInputY += Input.GetAxis("Mouse Y") * 2f;
+#endif
+
+    // Если используешь CameraManager, убери эту строку, она больше не нужна
+    // cameraManager.cameraInput = new Vector2(cameraInputX, cameraInputY);
 }
 }

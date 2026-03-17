@@ -30,12 +30,13 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void LateUpdate()
-    {
-        cameraManager.HandleAllCameraMovement();
+{
+    // Камера теперь сама двигается, метод больше не нужен
+    // cameraManager.HandleAllCameraMovement(); // удалить
 
-        isInteracting = animator.GetBool("isInteracting");
-        isUsingRootMotion = animator.GetBool("isUsingRootMotion");
-        playerLocomotion.isJumping = animator.GetBool("isJumping");
-        animator.SetBool("isGrounded", playerLocomotion.isGrounded);
-    }
+    isInteracting = animator.GetBool("isInteracting");
+    isUsingRootMotion = animator.GetBool("isUsingRootMotion");
+    playerLocomotion.isJumping = animator.GetBool("isJumping");
+    animator.SetBool("isGrounded", playerLocomotion.isGrounded);
+}
 }

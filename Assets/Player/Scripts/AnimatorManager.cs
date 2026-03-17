@@ -2,101 +2,85 @@ using UnityEngine;
 
 public class AnimatorManager : MonoBehaviour
 {
-   public Animator animator;
-   PlayerManager playerManager;
-   PlayerLocomotion playerLocomotion;
-   int horizontal;
-   int vertical;
+    public Animator animator;
+    PlayerManager playerManager;
+    PlayerLocomotion playerLocomotion;
 
-   private void Awake()
-   {
-    animator = GetComponent<Animator>();
-    playerManager = GetComponent<PlayerManager>();
-    playerLocomotion = GetComponent<PlayerLocomotion>();
-    horizontal = Animator.StringToHash("Horizontal");
-    vertical = Animator.StringToHash("Vertical");
-   }
+    int horizontalHash;
+    int verticalHash;
 
-   public void PlayTargetAnimation(string targetAnimation, bool isInteracting, bool useRootMotion = false)
-   {
-    animator.SetBool("isInteracting", isInteracting);
-    animator.SetBool("isUsingRootMotion", useRootMotion);
-    animator.CrossFade(targetAnimation, 0.2f);
-   }
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        playerManager = GetComponent<PlayerManager>();
+        playerLocomotion = GetComponent<PlayerLocomotion>();
 
-   public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting)
-   {
-    //Animation Snapping
-    float snappedHorizontal;
-    float snappedVertical;
-
-    #region Snapped Horizontal
-    
-    if (horizontalMovement > 0 && horizontalMovement < 0.55f)
-    {
-        snappedHorizontal = 0.5f;
-    }
-    else if (horizontalMovement > 0.55f)
-    {
-        snappedHorizontal = 1;
-    }
-    else if (horizontalMovement < 0 && horizontalMovement > -0.55f)
-    {
-        snappedHorizontal = -0.5f;
-    }
-    else if (horizontalMovement < -0.55f)
-    {
-        snappedHorizontal = -1;
-    }
-    else
-    {
-        snappedHorizontal = 0;
-    }
-    #endregion
-    #region Snapped Vertical
-    if (verticalMovement > 0 && verticalMovement < 0.55f)
-    {
-        snappedVertical = 0.5f;
-    }
-    else if (verticalMovement > 0.55f)
-    {
-        snappedVertical = 1;
-    }
-    else if (verticalMovement < 0 && verticalMovement > -0.55f)
-    {
-        snappedVertical = -0.5f;
-    }
-    else if (verticalMovement < -0.55f)
-    {
-        snappedVertical = -1;
-    }
-    else
-    {
-        snappedVertical = 0;
-    }
-    #endregion
-
-    if (isSprinting)
-    {
-        snappedHorizontal = horizontalMovement;
-        snappedVertical = 2;
+        horizontalHash = Animator.StringToHash("Horizontal");
+        verticalHash = Animator.StringToHash("Vertical");
     }
 
-
-    animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
-    animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
-   }
-
-   private void onAnimatorMove()
-   {
-    if (playerManager.isUsingRootMotion)
+    /// <summary>
+    /// Проигрывает заданную анимацию
+    /// </summary>
+    public void PlayTargetAnimation(string targetAnimation, bool isInteracting, bool useRootMotion = false)
     {
-        playerLocomotion.playerRigidbody.linearDamping = 0;
-        Vector3 deltaPosition = animator.deltaPosition;
-        deltaPosition.y = 0;
-        Vector3 velocity = deltaPosition / Time.deltaTime;
-        playerLocomotion.playerRigidbody.linearVelocity = velocity;
+        animator.SetBool("isInteracting", isInteracting);
+        animator.SetBool("isUsingRootMotion", useRootMotion);
+        animator.CrossFade(targetAnimation, 0.2f);
     }
-   }
 
+    /// <summary>
+    /// Обновление значений blend tree
+    /// </summary>
+    public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting)
+    {
+        float snappedHorizontal;
+        float snappedVertical;
+
+        // --- Snapped Horizontal ---
+        if (horizontalMovement > 0 && horizontalMovement < 0.55f) snappedHorizontal = 0.5f;
+        else if (horizontalMovement >= 0.55f) snappedHorizontal = 1f;
+        else if (horizontalMovement < 0 && horizontalMovement > -0.55f) snappedHorizontal = -0.5f;
+        else if (horizontalMovement <= -0.55f) snappedHorizontal = -1f;
+        else snappedHorizontal = 0f;
+
+        // --- Snapped Vertical ---
+        if (verticalMovement > 0 && verticalMovement < 0.55f) snappedVertical = 0.5f;
+        else if (verticalMovement >= 0.55f) snappedVertical = 1f;
+        else if (verticalMovement < 0 && verticalMovement > -0.55f) snappedVertical = -0.5f;
+        else if (verticalMovement <= -0.55f) snappedVertical = -1f;
+        else snappedVertical = 0f;
+
+        // --- Спринт ---
+        if (isSprinting)
+        {
+            snappedHorizontal = horizontalMovement; // оставляем полное значение для плавного поворота
+            snappedVertical = 2f; // обозначаем спринт в blend tree
+        }
+
+        // Обновляем значения Animator с плавным переходом
+        animator.SetFloat(horizontalHash, snappedHorizontal, 0.1f, Time.deltaTime);
+        animator.SetFloat(verticalHash, snappedVertical, 0.1f, Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Применяем Root Motion к Rigidbody
+    /// </summary>
+    private void OnAnimatorMove()
+    {
+        // Unity будет вызывать этот метод автоматически, если Apply Root Motion включено
+        if (!playerManager.isUsingRootMotion) return;
+
+        Rigidbody rb = playerLocomotion.playerRigidbody;
+
+        // Очищаем текущую скорость
+        rb.linearVelocity = Vector3.zero;
+
+        // Берем движение из Root Motion (только XZ)
+        Vector3 delta = animator.deltaPosition;
+        delta.y = 0f;
+        Vector3 velocity = delta / Time.deltaTime;
+
+        rb.linearVelocity = velocity;
+    }
 }

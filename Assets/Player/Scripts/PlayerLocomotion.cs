@@ -88,41 +88,27 @@ public class PlayerLocomotion : MonoBehaviour
         }
 
 
-        moveDirecton = moveDirecton * runningSpeed;
+        
 
         Vector3 movementVelocity = moveDirecton;
         playerRigidbody.linearVelocity = movementVelocity;
     }
 
     private void HandleRotation()
-    {
-        if(isJumping)
+{
+    if (isJumping)
         return;
 
-        Vector3 targetDirection = Vector3.zero;
+    Vector3 targetDirection = cameraObject.forward * inputManager.verticalInput;
+    targetDirection += cameraObject.right * inputManager.horizontalInput;
+    targetDirection.y = 0;
 
-        targetDirection = cameraObject.forward * inputManager.verticalInput;
-        targetDirection = targetDirection + cameraObject.right * inputManager.horizontalInput;
-        targetDirection.Normalize();
-        targetDirection.y = 0;
+    if (targetDirection == Vector3.zero)
+        return;
 
-        if (targetDirection == Vector3.zero)
-        targetDirection = transform.forward;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-        transform.rotation = playerRotation;
-        
-        targetRotation = Quaternion.Euler(0, cameraHolderTransform.eulerAngles.y, 0);
-        playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        
-        if (inputManager.cameraInputX != 0 || inputManager.cameraInputY != 0)
-        {
-            transform.rotation = playerRotation;
-        }
-
-    }
+    Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+}
 
     private void HandleFallingAndLanding()
     {
@@ -134,6 +120,8 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (!isGrounded && !isJumping)
         {
+            animatorManager.animator.SetBool("isJumping", false);
+            
             if (!playerManager.isInteracting)
             {
                 animatorManager.PlayTargetAnimation("Falling", true);
@@ -141,8 +129,8 @@ public class PlayerLocomotion : MonoBehaviour
 
             animatorManager.animator.SetBool("isUsingRootMotion", false);
             inAirTimer = inAirTimer + Time.deltaTime;
-            playerRigidbody.AddForce(transform.forward * leapingVelocity);
-            playerRigidbody.AddForce(-Vector3.up * falllingVelocity * inAirTimer);
+            //playerRigidbody.AddForce(transform.forward * leapingVelocity);
+            //playerRigidbody.AddForce(-Vector3.up * falllingVelocity * inAirTimer);
         }
 
         if (Physics.SphereCast(rayCastOrigin, 0.2f, -Vector3.up, out hit, groundedLayer))
