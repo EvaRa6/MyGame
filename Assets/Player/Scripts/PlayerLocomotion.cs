@@ -32,7 +32,7 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Movement Speeds")]
     public float walkingSpeed = 1.5f;
     public float runningSpeed = 7;
-    public float sprintingSpeed = 7f;
+    public float sprintingSpeed = 7;
     public float rotationSpeed = 3.5f;
 
     [Header("Jump Speeds")]
@@ -61,33 +61,38 @@ public class PlayerLocomotion : MonoBehaviour
 
 
     private void HandleMovement()
-{
-    if (isJumping)
+    {
+        if(isJumping)
         return;
 
-    // Направление движения относительно камеры
-    moveDirecton = cameraObject.forward * inputManager.verticalInput;
-    moveDirecton += cameraObject.right * inputManager.horizontalInput;
-    moveDirecton.Normalize();
-    moveDirecton.y = 0;
+        moveDirecton = cameraObject.forward * inputManager.verticalInput;
+        moveDirecton = moveDirecton + cameraObject.right * inputManager.horizontalInput;
+        moveDirecton.Normalize();
+        moveDirecton.y = 0;
 
-    // Применяем скорость
-    if (isSprinting)
-    {
-        moveDirecton *= sprintingSpeed; // спринт
-    }
-    else if (inputManager.moveAmount > 0)
-    {
-        moveDirecton *= runningSpeed; // бег
-    }
-    else
-    {
-        moveDirecton *= walkingSpeed; // ходьба
-    }
 
-    // Применяем к Rigidbody
-    playerRigidbody.linearVelocity = moveDirecton; // ⚡ важно использовать velocity
-}
+        if (isSprinting)
+        {
+            moveDirecton = moveDirecton * sprintingSpeed;
+        }
+        else
+        {
+            if (inputManager.moveAmount >= 0.5f)
+            {
+            moveDirecton = moveDirecton * runningSpeed;
+            }
+            else
+            {
+            moveDirecton = moveDirecton * walkingSpeed;
+            }
+        }
+
+
+        moveDirecton = moveDirecton * runningSpeed;
+
+        Vector3 movementVelocity = moveDirecton;
+        playerRigidbody.linearVelocity = movementVelocity;
+    }
 
     private void HandleRotation()
     {
