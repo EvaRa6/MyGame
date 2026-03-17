@@ -80,11 +80,16 @@ public class InputManager : MonoBehaviour
         cameraInputY = cameraInput.y;
 
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+<<<<<<< HEAD
         animatorManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isSprinting);
+=======
+        animatorManager.UpdateAnimatorValues(horizontalInput, verticalInput, playerLocomotion.isSprinting);
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     }
 
     private void HandleSprintingInput()
     {
+<<<<<<< HEAD
         if (b_Input && moveAmount > 0.5f)
         {
             playerLocomotion.isSprinting = true;
@@ -93,6 +98,20 @@ public class InputManager : MonoBehaviour
         {
             playerLocomotion.isSprinting = false;
         }
+=======
+        // Тумблер спринта
+        playerLocomotion.isSprinting = isSprintingToggle && moveAmount > 0;
+    }
+
+    public void OnSprintButtonPressed()
+    {
+        isSprintingToggle = !isSprintingToggle; // переключение состояния спринта
+    }
+
+    public void OnJumpButtonPressed()
+    {
+        jump_Input = true; // активируем прыжок
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     }
 
     private void HandleJumpingInput()
@@ -121,7 +140,11 @@ public class InputManager : MonoBehaviour
             {
                 interactionInput = false;
             }
+<<<<<<< HEAD
         } 
+=======
+        }
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     }
 
     private void HandleTouchCamera()

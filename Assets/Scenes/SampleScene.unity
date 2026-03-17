@@ -2089,7 +2089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -278.59998, y: -33.96}
+  m_AnchoredPosition: {x: -278.59998, y: -34.2}
   m_SizeDelta: {x: 187.5, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518744131
@@ -2244,12 +2244,17 @@ Transform:
   - {fileID: 1306830199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &533095070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8128112852107016052, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+  m_PrefabInstance: {fileID: 629485938654171164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &533095076 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
   m_PrefabInstance: {fileID: 629485938654171164}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 533095070}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d82223152703b2741a7069c079eded6a, type: 3}
@@ -2260,6 +2265,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8901095556257967566, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
   m_PrefabInstance: {fileID: 629485938654171164}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+--- !u!95 &533095093 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3271627544913098676, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+  m_PrefabInstance: {fileID: 629485938654171164}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
 --- !u!1 &563376145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,7 +3759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 476.9, y: 178}
+  m_AnchoredPosition: {x: 507.3, y: 178}
   m_SizeDelta: {x: 250, y: 192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1357793044
@@ -3905,6 +3918,7 @@ MonoBehaviour:
   cameraPivot: {fileID: 1818423018}
   cameraObject: {fileID: 330585545}
 <<<<<<< HEAD
+<<<<<<< HEAD
   player: {fileID: 533095078}
   followSpeed: 7
   rotateSpeed: 0.1
@@ -3914,6 +3928,12 @@ MonoBehaviour:
   player: {fileID: 533095070}
   cameraSmoothTime: 0.1
 >>>>>>> parent of 26b544a (update for mobile)
+=======
+  player: {fileID: 533095070}
+  followSpeed: 10
+  rotateSpeed: 5
+  cameraOffset: {x: 0, y: 1.8, z: -3}
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
 --- !u!4 &1416553483
 Transform:
   m_ObjectHideFlags: 0
@@ -4328,9 +4348,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1379369347}
     - target: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+<<<<<<< HEAD
+=======
+      propertyPath: sprintInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
       propertyPath: interactionInput
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: isSprintingToggle
       value: 0
@@ -4338,25 +4366,71 @@ PrefabInstance:
       propertyPath: interactionInput
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     - target: {fileID: 833362560654195120, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 833362560654195120, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: m_CollisionDetection
+<<<<<<< HEAD
       value: 3
 >>>>>>> parent of 26b544a (update for mobile)
       objectReference: {fileID: 0}
     - target: {fileID: 4847450105064503941, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: canInteract
+=======
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271627544913098676, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 3ce16b0c2ae4ac84fa450432c1f64f35, type: 3}
+    - target: {fileID: 3732676604967030161, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 533095093}
+    - target: {fileID: 3732676604967030161, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732676604967030161, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: 'clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 376ea66cc2387a04594c9c86e185d785, type: 3}
+    - target: {fileID: 3732676604967030161, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: 'clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 68f4c68f78a0a6741bca9ab6fa4fffcc, type: 3}
+    - target: {fileID: 3732676604967030161, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: 'clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 178c1a4059dc5be47991713080a4dc58, type: 3}
+    - target: {fileID: 4064990603897402490, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: Priority
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064990603897402490, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: m_Volume
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4847450105064503941, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: isInteracting
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 4847450105064503941, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: isUsingRootMotion
+=======
+    - target: {fileID: 4064990603897402490, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255284479386433283, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: m_IsActive
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
@@ -4369,12 +4443,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+<<<<<<< HEAD
       propertyPath: groundedLayer.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
 =======
 >>>>>>> parent of 26b544a (update for mobile)
+=======
+      propertyPath: sprintingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
       propertyPath: cameraHolderTransform
       value: 
       objectReference: {fileID: 0}

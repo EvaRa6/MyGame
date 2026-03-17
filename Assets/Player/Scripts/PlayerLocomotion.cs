@@ -5,14 +5,30 @@ public class PlayerLocomotion : MonoBehaviour
     PlayerManager playerManager;
     AnimatorManager animatorManager;
     InputManager inputManager;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     Vector3 moveDirecton;
     Transform cameraObject;
     public Rigidbody playerRigidbody;
 
     [Header("Camera Transform")]
     public Transform cameraHolderTransform;
+    
+    [Header("Rotation Variables")]
+    Quaternion targetRotation; //place we want to rotate
+    Quaternion playerRotation; //player we are rotating now, constantly changing
+    
+    [Header("Falling")]
+    public float inAirTimer;
+    public float leapingVelocity;
+    public float falllingVelocity;
+    public float rayCastHeightOffSet = 0.5f;
+    public LayerMask groundedLayer;
 
+<<<<<<< HEAD
     [Header("Rotation Variables")]
     Quaternion targetRotation; //place we want to rotate
     Quaternion playerRotation; //player we are rotating now, constantly changing
@@ -23,6 +39,22 @@ public class PlayerLocomotion : MonoBehaviour
     public float falllingVelocity;
     public float rayCastHeightOffSet = 0.5f;
     public LayerMask groundedLayer;
+=======
+    [Header("Movement Flags")]
+    public bool isSprinting;
+    public bool isGrounded;
+    public bool isJumping;
+
+    [Header("Movement Speeds")]
+    public float walkingSpeed = 1.5f;
+    public float runningSpeed = 7;
+    public float sprintingSpeed = 7f;
+    public float rotationSpeed = 3.5f;
+
+    [Header("Jump Speeds")]
+    public float jumpHeight = 3;
+    public float gravityIntensity = -15;
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
 
     [Header("Movement Flags")]
     public bool isSprinting;
@@ -51,9 +83,9 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleAllMovement()
     {
         HandleFallingAndLanding();
-
+        
         if (playerManager.isInteracting)
-            return;
+        return;
 
         HandleMovement();
         HandleRotation();
@@ -61,7 +93,20 @@ public class PlayerLocomotion : MonoBehaviour
 
 
     private void HandleMovement()
+{
+    if (isJumping)
+        return;
+
+    // Направление движения относительно камеры
+    moveDirecton = cameraObject.forward * inputManager.verticalInput;
+    moveDirecton += cameraObject.right * inputManager.horizontalInput;
+    moveDirecton.Normalize();
+    moveDirecton.y = 0;
+
+    // Применяем скорость
+    if (isSprinting)
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         if (isJumping)
             return;
@@ -112,12 +157,27 @@ public class PlayerLocomotion : MonoBehaviour
 
         Vector3 movementVelocity = moveDirecton;
         playerRigidbody.linearVelocity = movementVelocity;
+=======
+        moveDirecton *= sprintingSpeed; // спринт
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     }
+    else if (inputManager.moveAmount > 0)
+    {
+        moveDirecton *= runningSpeed; // бег
+    }
+    else
+    {
+        moveDirecton *= walkingSpeed; // ходьба
+    }
+
+    // Применяем к Rigidbody
+    playerRigidbody.linearVelocity = moveDirecton; // ⚡ важно использовать velocity
+}
 
     private void HandleRotation()
     {
-        if (isJumping)
-            return;
+        if(isJumping)
+        return;
 
         Vector3 targetDirection = Vector3.zero;
 
@@ -127,16 +187,23 @@ public class PlayerLocomotion : MonoBehaviour
         targetDirection.y = 0;
 
         if (targetDirection == Vector3.zero)
-            targetDirection = transform.forward;
+        targetDirection = transform.forward;
 
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
+<<<<<<< HEAD
 
         targetRotation = Quaternion.Euler(0, cameraHolderTransform.eulerAngles.y, 0);
         playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
+=======
+        
+        targetRotation = Quaternion.Euler(0, cameraHolderTransform.eulerAngles.y, 0);
+        playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
         if (inputManager.cameraInputX != 0 || inputManager.cameraInputY != 0)
         {
             transform.rotation = playerRotation;
@@ -214,7 +281,7 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleDodge()
     {
         if (playerManager.isInteracting)
-            return;
+        return;
 
         animatorManager.PlayTargetAnimation("Dodge", true, true);
         //TOGGLE invulnerable bool for no HP damage during animation

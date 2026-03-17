@@ -6,11 +6,15 @@ public class CameraManager : MonoBehaviour
     public InputManager inputManager;
 <<<<<<< HEAD
 
+<<<<<<< HEAD
     public Transform cameraPivot;   // Pivot камеры (относительно головы)
 =======
     
     public Transform cameraPivot;
 >>>>>>> parent of 26b544a (update for mobile)
+=======
+    public Transform cameraPivot;   // pivot для вертикального вращения
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     public Camera cameraObject;
     public GameObject player;
     
@@ -30,18 +34,21 @@ public class CameraManager : MonoBehaviour
 
 <<<<<<< HEAD
     [Header("Camera Settings")]
-    public float followSpeed = 10f;    // скорость следования за игроком
-    public float rotateSpeed = 5f;     // скорость вращения камеры
-    public Vector3 offset = new Vector3(0, 1.8f, -3f); // смещение камеры от головы
+    public float followSpeed = 10f;       // скорость следования камеры
+    public float rotateSpeed = 5f;        // скорость вращения камеры
+    public Vector3 cameraOffset = new Vector3(0, 1.8f, -3f); // смещение камеры от игрока
 
     private float lookHorizontal;
     private float lookVertical;
     private float minVertical = -35f;
     private float maxVertical = 60f;
-    public float cameraSensitivity = 0.05f;
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 26b544a (update for mobile)
+=======
+    // Для совместимости с PlayerManager
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     public void HandleAllCameraMovement()
     {
         FollowPlayer();
@@ -50,6 +57,7 @@ public class CameraManager : MonoBehaviour
     
     private void FollowPlayer()
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         // камера всегда позади игрока с учетом его поворота
         Vector3 targetPosition = player.position + player.rotation * offset;
@@ -62,10 +70,16 @@ public class CameraManager : MonoBehaviour
         targetPosition = Vector3.SmoothDamp(transform.position, player.transform.position, ref cameraFollowVelocity, cameraSmoothTime * Time.deltaTime);
         transform.position = targetPosition;
 >>>>>>> parent of 26b544a (update for mobile)
+=======
+        // Камера всегда находится позади игрока + offset
+        Vector3 desiredPosition = player.position + new Vector3(0, cameraOffset.y, 0) + player.forward * cameraOffset.z;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     }
 
     private void RotateCamera()
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         float smoothX = inputManager.cameraInputX * cameraSensitivity;
         float smoothY = inputManager.cameraInputY * cameraSensitivity;
@@ -95,5 +109,19 @@ public class CameraManager : MonoBehaviour
         targetRotation = Quaternion.Slerp(cameraPivot.localRotation, targetRotation, cameraSmoothTime);
         cameraPivot.localRotation = targetRotation;
 >>>>>>> parent of 26b544a (update for mobile)
+=======
+        // Свайп пальцем
+        lookHorizontal += inputManager.cameraInputX;
+        lookVertical -= inputManager.cameraInputY;
+        lookVertical = Mathf.Clamp(lookVertical, minVertical, maxVertical);
+
+        // Поворот игрока по горизонтали
+        Quaternion playerRotation = Quaternion.Euler(0, lookHorizontal, 0);
+        player.rotation = Quaternion.Slerp(player.rotation, playerRotation, rotateSpeed * Time.deltaTime);
+
+        // Поворот камеры по вертикали через pivot (голова)
+        Quaternion pivotRotation = Quaternion.Euler(lookVertical, 0, 0);
+        cameraPivot.localRotation = Quaternion.Slerp(cameraPivot.localRotation, pivotRotation, rotateSpeed * Time.deltaTime);
+>>>>>>> parent of 3d35a70 (fixed camera manager and player movement)
     }
 }
