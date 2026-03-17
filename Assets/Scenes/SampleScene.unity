@@ -1983,7 +1983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -278.59998, y: -34.2}
+  m_AnchoredPosition: {x: -278.59998, y: -33.96}
   m_SizeDelta: {x: 187.5, y: 144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518744131
@@ -2136,17 +2136,12 @@ Transform:
   - {fileID: 1306830199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &533095070 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8128112852107016052, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
-  m_PrefabInstance: {fileID: 629485938654171164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &533095076 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
   m_PrefabInstance: {fileID: 629485938654171164}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533095070}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d82223152703b2741a7069c079eded6a, type: 3}
@@ -2162,6 +2157,28 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 3271627544913098676, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
   m_PrefabInstance: {fileID: 629485938654171164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &533095094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4158417969384406819, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+  m_PrefabInstance: {fileID: 629485938654171164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2d911bb6be809468355d8dddd9cd80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &533095097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+  m_PrefabInstance: {fileID: 629485938654171164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c9e2ff0e4e7da4aa5b2d8f0cbdda00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion
 --- !u!1 &563376145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 507.3, y: 178}
+  m_AnchoredPosition: {x: 476.9, y: 178}
   m_SizeDelta: {x: 250, y: 192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1357793044
@@ -3814,10 +3831,11 @@ MonoBehaviour:
   inputManager: {fileID: 533095076}
   cameraPivot: {fileID: 1818423018}
   cameraObject: {fileID: 330585545}
-  player: {fileID: 533095070}
-  followSpeed: 10
-  rotateSpeed: 5
-  cameraOffset: {x: 0, y: 1.8, z: -3}
+  player: {fileID: 533095078}
+  followSpeed: 7
+  rotateSpeed: 0.1
+  offset: {x: 0, y: 0, z: 0}
+  cameraSensitivity: 0.05
 --- !u!4 &1416553483
 Transform:
   m_ObjectHideFlags: 0
@@ -4235,7 +4253,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: animatorManager
+      value: 
+      objectReference: {fileID: 533095094}
+    - target: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: interactionInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: playerLocomotion
+      value: 
+      objectReference: {fileID: 533095097}
+    - target: {fileID: 263491791087447998, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: isSprintingToggle
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 833362560654195120, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
@@ -4244,12 +4274,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 833362560654195120, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: m_CollisionDetection
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3271627544913098676, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 3ce16b0c2ae4ac84fa450432c1f64f35, type: 3}
+    - target: {fileID: 3271627544913098676, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3732676604967030161, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: animator
       value: 
@@ -4286,6 +4320,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4158417969384406819, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 533095093}
     - target: {fileID: 5255284479386433283, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4311,9 +4349,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
-      propertyPath: sprintingSpeed
-      value: 5
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 533095076}
+    - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: rotationSpeed
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: sprintingSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
+      propertyPath: animatorManager
+      value: 
+      objectReference: {fileID: 533095094}
     - target: {fileID: 5279613748865871986, guid: d9104fe3fc0e7f244b1185f818a8a770, type: 3}
       propertyPath: cameraHolderTransform
       value: 

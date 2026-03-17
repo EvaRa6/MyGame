@@ -5,8 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     PlayerControls playerControls;
-    PlayerLocomotion playerLocomotion;
-    AnimatorManager animatorManager;
+    public PlayerLocomotion playerLocomotion;
+    public AnimatorManager animatorManager;
     public PlayerManager player;
 
     public Vector2 movementInput;
@@ -79,19 +79,21 @@ public class InputManager : MonoBehaviour
         cameraInputX = cameraInput.x;
         cameraInputY = cameraInput.y;
 
-        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        animatorManager.UpdateAnimatorValues(horizontalInput, verticalInput, playerLocomotion.isSprinting);
+        // moveAmount = сила движения (для анимаций)
+        moveAmount = Mathf.Clamp01(Mathf.Sqrt(horizontalInput * horizontalInput + verticalInput * verticalInput));
+
+        animatorManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isSprinting);
     }
 
     private void HandleSprintingInput()
     {
-        // Тумблер спринта
+        // Тумблер спринта: включен и есть движение
         playerLocomotion.isSprinting = isSprintingToggle && moveAmount > 0;
     }
 
     public void OnSprintButtonPressed()
     {
-        isSprintingToggle = !isSprintingToggle; // переключение состояния спринта
+        isSprintingToggle = !isSprintingToggle; // переключаем состояние спринта
     }
 
     public void OnJumpButtonPressed()
@@ -119,12 +121,9 @@ public class InputManager : MonoBehaviour
 
     private void HandleInteractionInput()
     {
-        if (interactionInput)
+        if (interactionInput && !player.canInteract)
         {
-            if (!player.canInteract)
-            {
-                interactionInput = false;
-            }
+            interactionInput = false;
         }
     }
 
