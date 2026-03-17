@@ -17,6 +17,8 @@ public class AnimatorManager : MonoBehaviour
 
         horizontalHash = Animator.StringToHash("Horizontal");
         verticalHash = Animator.StringToHash("Vertical");
+
+        animator.applyRootMotion = false;
     }
 
     /// <summary>
@@ -66,21 +68,4 @@ public class AnimatorManager : MonoBehaviour
     /// <summary>
     /// Применяем Root Motion к Rigidbody
     /// </summary>
-    private void OnAnimatorMove()
-    {
-        // Unity будет вызывать этот метод автоматически, если Apply Root Motion включено
-        if (!playerManager.isUsingRootMotion) return;
-
-        Rigidbody rb = playerLocomotion.playerRigidbody;
-
-        // Очищаем текущую скорость
-        rb.linearVelocity = Vector3.zero;
-
-        // Берем движение из Root Motion (только XZ)
-        Vector3 delta = animator.deltaPosition;
-        delta.y = 0f;
-        Vector3 velocity = delta / Time.deltaTime;
-
-        rb.linearVelocity = velocity;
-    }
 }
