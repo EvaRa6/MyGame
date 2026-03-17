@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
     }
-
+    
     private void OnEnable()
     {
         if (playerControls == null)
@@ -70,7 +70,7 @@ public class InputManager : MonoBehaviour
         HandleInteractionInput();
         HandleTouchCamera();
     }
-
+    
     private void HandleMovementInput()
     {
         verticalInput = movementInput.y;
@@ -121,15 +121,16 @@ public class InputManager : MonoBehaviour
             {
                 interactionInput = false;
             }
-        }
+        } 
     }
 
     private void HandleTouchCamera()
+{
+    if (Input.touchCount > 0)
     {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
+        Touch touch = Input.GetTouch(0);
 
+<<<<<<< HEAD
             Debug.Log("Touch detected");
 
             if (touch.phase == TouchPhase.Moved)
@@ -143,7 +144,26 @@ public class InputManager : MonoBehaviour
 #if UNITY_EDITOR
             cameraInputX = Input.GetAxis("Mouse X") * 2f;
             cameraInputY = Input.GetAxis("Mouse Y") * 2f;
+=======
+        Debug.Log("Touch detected");
+
+        if (touch.phase == TouchPhase.Moved)
+        {
+            cameraInputX = touch.deltaPosition.x * touchSensitivity;
+            cameraInputY = touch.deltaPosition.y * touchSensitivity;
+
+            Debug.Log("Touch moving: " + cameraInputX + " " + cameraInputY);
+        }
+
+        #if UNITY_EDITOR
+cameraInputX = Input.GetAxis("Mouse X") * 2f;
+cameraInputY = Input.GetAxis("Mouse Y") * 2f;
+>>>>>>> parent of 26b544a (update for mobile)
 #endif
         }
     }
 }
+<<<<<<< HEAD
+=======
+}
+>>>>>>> parent of 26b544a (update for mobile)

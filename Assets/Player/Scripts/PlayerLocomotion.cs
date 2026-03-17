@@ -62,6 +62,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
+<<<<<<< HEAD
         if (isJumping)
             return;
 
@@ -71,6 +72,17 @@ public class PlayerLocomotion : MonoBehaviour
         moveDirecton.y = 0;
 
 
+=======
+        if(isJumping)
+        return;
+
+        moveDirecton = cameraObject.forward * inputManager.verticalInput;
+        moveDirecton = moveDirecton + cameraObject.right * inputManager.horizontalInput;
+        moveDirecton.Normalize();
+        moveDirecton.y = 0;
+
+
+>>>>>>> parent of 26b544a (update for mobile)
         if (isSprinting)
         {
             moveDirecton = moveDirecton * sprintingSpeed;
@@ -79,11 +91,19 @@ public class PlayerLocomotion : MonoBehaviour
         {
             if (inputManager.moveAmount >= 0.5f)
             {
+<<<<<<< HEAD
                 moveDirecton = moveDirecton * runningSpeed;
             }
             else
             {
                 moveDirecton = moveDirecton * walkingSpeed;
+=======
+            moveDirecton = moveDirecton * runningSpeed;
+            }
+            else
+            {
+            moveDirecton = moveDirecton * walkingSpeed;
+>>>>>>> parent of 26b544a (update for mobile)
             }
         }
 
